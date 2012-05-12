@@ -1,0 +1,38 @@
+#encode-w textarea,
+#decode-w textarea {
+	height: 150px;
+}
+
+.push-down-3 {
+	margin-top: 30px;
+}
+
+#workdclock-widget-w {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.worldclock-widget {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.wc-time {
+	font-size: 2em;
+	font-weight: bolder;
+		margin: 5px 0;
+}
+.wc-timezone {
+	font-weight: bolder;
+	font-size: 1.1em;
+}
+.wc-timezone,
+.wc-week-day,
+.wc-date {
+	margin: 0;
+}
+
+#timezone-list li {
+	float: left;
+	width: 240px;
+}

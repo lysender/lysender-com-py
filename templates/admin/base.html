@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="all" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>{% block title %}Admin{% endblock %} :: Promoflight</title>
+<link type="text/css" href="/media/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen, projection" />
+<link type="text/css" href="/media/css/admin/style.css" rel="stylesheet" media="screen, projection" />
+{% block styles %}{% endblock %}
+</head>
+<body>
+    {% block header %}
+    <div id="header" class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="/">Promoflight</a>
+                <ul class="nav">
+                    <li class="active">
+                        <a href="/admin">Admin home</a>
+                    </li>
+                    <li><a href="/admin/airline">Airlines</a></li>
+                    <li><a href="/admin/location">Locations</a></li>
+                    <li><a href="/admin/promo">Promos</a></li>
+                    <li><a href="/admin/news">News</a></li>
+                </ul>
+                <ul class="nav pull-right">
+                    <li><a href="/admin/logout">Admin - logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div><!-- /#header -->
+    {% endblock %}
+
+    <div id="content" class="container">
+        {% block maintitle %}
+        <h2>Admin</h2>
+        {% endblock %}
+
+        {% block breadcrumb %}
+        <ul class="breadcrumb">
+            <li>
+                <a href="/">Home</a> <span class="divider">/</span>
+            </li>
+            <li class="active">
+                <a href="/admin">Admin</a>
+            </li>
+        </ul>
+        {% endblock %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <div id="footer" class="container">
+        {% block footer %}
+        <div id="foot_nav">
+            <ul>
+                <li><a href="/manual">Manual</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/contribute">Contribute</a></li>
+                <li><a href="/credits">Credits</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+            <p><a href="/">Promoflight.info</a></p>
+        </div>
+        {% endblock %}
+    </div>
+{% block scripts %}{% endblock %}
+</body>
+</html>

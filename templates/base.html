@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="all" />
+
+{% block headdesc %}{% endblock %}
+{% block headkeywords %}{% endblock %}
+
+<link rel="shortcut icon" href="/favicon.ico" />
+<title>{% block title %}Lysender{% endblock %}</title>
+<link type="text/css" href="/media/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen, projection" />
+
+{% for style in styles %}
+<link type="text/css" href="{{ style }}" rel="stylesheet" media="screen, projection" />
+{% endfor %}
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div id="header" class="span12">
+            <div class="row">
+                <div class="head-block span12">
+                    <h1><a href="/">Lysender</a></h1>
+                    <p>Web developer by day, product manager by night</p>
+                </div>
+                <div id="menu" class="span12">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="http://blog.lysender.com/">Blog</a></li>
+                        <li><a href="/projects">Projects</a></li>
+                        <li><a href="/extra">Extras</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div><!-- /.row -->
+        </div><!-- #header -->
+        
+        <div id="content" class="span12">
+            {% block content %}{% endblock %}
+        </div><!-- #content -->
+        
+        <div id="footer" class="span12">
+            <div class="row">
+                <div class="foot-info span6">
+                    <p>
+                        Web developer from Antipolo City, Rizal, Phillipines<br />
+                        Powered by <a href="https://developers.google.com/appengine/">Google AppEngine</a>
+                    </p>
+                </div>
+                
+                <div class="copyright span6">
+                    <p>
+                        <span><a href="/">Lysender.com</a></span>
+                        <span><a href="mailto:leonel@lysender.com">email me</a></span>
+                        <span><a href="http://twitter.com/lysender">tweet me</a></span><br />
+                        copyright &copy; 2009-{{ current_year }}
+                    </p>
+                </div>
+            </div><!-- /.row -->
+        </div><!-- #footer -->
+    </div><!-- .row -->
+</div><!-- .container -->
+
+<script type="text/javascript">
+    var base_url = '{{ base_url }}';
+</script>
+
+{% if show_google_plusone %}
+<script type="text/javascript">
+    $(window).load(function(){
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    });
+</script>
+{% endif %}
+
+{% if show_facebook_like %}
+<script type="text/javascript">
+    $(window).load(function(){
+        $(".fblike-single").each(function(){
+            var t = $(this);
+            var info = t.attr("href");
+            t.replaceWith("<iframe src='" + info + "' scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden; width:450px; height:35px;\" allowTransparency=\"true\"></iframe>");
+        });
+    });
+</script>
+{% endif %}
+
+{% if show_google_analytics %}
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7713082-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+{% endif %}
+
+</body>
+</html>
