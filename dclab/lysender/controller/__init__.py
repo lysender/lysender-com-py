@@ -3,6 +3,7 @@ from google.appengine.ext.webapp import template
 
 import os
 import config
+import datetime
 
 class BaseController:
 
@@ -40,6 +41,10 @@ class BaseController:
 
     def post_dispatch(self):
         if self.template is not None and self.template_dir is not None:
+            # Populate current year
+            dt = datetime.date.today()
+            self.template_values['current_year'] = dt.year
+            
             # Populate styles and scripts
             self.template_values['styles'] = self.styles
             self.template_values['scripts'] = self.scripts
