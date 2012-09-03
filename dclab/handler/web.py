@@ -23,6 +23,7 @@ def get_template_params():
     template_params['scripts'] = list(app.config.get('template_scripts'))
     template_params['head_scripts'] = []
     template_params['styles'] = list(app.config.get('template_styles'))
+    template_params['show_google_analytics'] = app.config.get('show_google_analytics')
 
     # Populate current year
     template_params['current_year'] = datetime.date.today().year

@@ -16,6 +16,11 @@ routes = [webapp2.Route(r'/', handler='dclab.lysender.handler.index.IndexHandler
           webapp2.Route(r'/extra/tools/sumfirstcol', handler='dclab.lysender.handler.extra.tools.sumfirstcol.SumfirstcolHandler', name='tools_sumfirstcol')]
 
 template_dir = 'templates'
+in_production = True
+
+
+if os.environ['SERVER_SOFTWARE'].startswith('Dev'):
+    in_production = False
 
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__), template_dir)))
@@ -25,4 +30,5 @@ config = {
     'template_styles': ['media/bootstrap/css/bootstrap.min.css', 'media/css/style.css'],
     'template_scripts': ['media/js/jquery-1.6.4.min.js'],
     'jinja_environment': jinja_environment,
+    'show_google_analytics': in_production,
 }

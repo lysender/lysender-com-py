@@ -1,11 +1,11 @@
-import unittest2
+import unittest
 import datetime
 
 from pylib import mock
 from pylib import decorator
 import dclab
 
-class TestDclab(unittest2.TestCase):
+class TestDclab(unittest.TestCase):
     """Test case for dclab helper functions"""
 
     date_fail = lambda: [
