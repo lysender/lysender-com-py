@@ -4,6 +4,8 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
+default_expiration: "1d"
+
 libraries:
 - name: jinja2
   version: latest
@@ -23,5 +25,6 @@ handlers:
   upload: media/googlebf4c56384f8fc253.html
 - url: /media
   static_dir: media
+  expiration: "365d"
 - url: /.*
   script: web.app
