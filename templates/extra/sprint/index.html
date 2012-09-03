@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Lysender :: Sprint Name Generator{% endblock %}
+
+{% block headdesc %}
+<meta name="description" content="Extras - Sprint Name Generator" />
+{% endblock %}
+
+{% block headkeywords %}
+<meta name="keywords" content="extras, sprint, name, generator" />
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="span1">
+        <img src="{{ base_url }}media/images/chalkboard-64x64.gif" alt="projects" />
+    </div>
+    
+    <div class="about-info span11">
+        <div class="row">
+            <div class="span11">
+                <h2 class="fancy"><a href="{{ base_url }}extra/sprint">Sprint Name Generator</a></h2>
+                
+                <p>Select a letter from the list below and suggestions will be shown.</p>
+            
+                <h3 id="sprint-letters" class="thin">
+                {% for letter in sprint_letters %}
+                    <a href="{{ base_url }}extra/sprint/{{ letter }}">{{ letter|upper }}</a>
+                {% endfor %}
+                </h3>
+            </div>
+            
+            <div class="span11">
+                <p class="push-down-3">Enjoy and share.</p>
+            </div>
+        
+            <div class="span11">
+                <a class="fblike-single" href="http://www.facebook.com/plugins/like.php?href={{ sprint_url_encoded }}&amp;layout=standard&amp;show_faces=false&amp;width=450&amp;action=like&amp;font&amp;colorscheme=light&amp;height=35"></a>
+            </div>
+            
+            <div class="span11">
+                <g:plusone annotation="inline" href="{{ sprint_url }}"></g:plusone>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

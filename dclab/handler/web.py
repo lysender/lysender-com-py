@@ -1,132 +1,55 @@
-from google.appengine.ext import webapp
-import re
+import os
+import webapp2
+import logging
+import datetime
 
-from dclab.lysender.controller.http import http404
-from dclab.lysender.controller.http import http500
-from dclab.lysender.controller import Http404Exception
-from dclab.lysender.controller import Http500Exception
+import config
 
-class WebHandler(webapp.RequestHandler):
-    """
-    Web handler for web/http requests accross the cluster
+class WebHandler(webapp2.RequestHandler):
+    '''Base handler for site'''
 
-    /foo/bar/baz
-    """
+    def __init__(self, request, response):
+        self.initialize(request, response)
+        self.template_params = get_template_params()
 
-    def get_app_controller(self, request, response, method):
-        """Returns the app controller for that matches the request's path"""
-        path = self.request.path.strip('/')
-        app_controller = None
+    def render_template(self, template_file):
+        template = config.jinja_environment.get_template(template_file)
+        self.response.out.write(template.render(self.template_params))
 
-        if len(path) < 100 and self.is_valid_url_pattern(path):
-            bpath = self.get_controller_path(self.request.path, [])
-            
-            if 'path' in bpath and 'controller' in bpath:
-                modpath = '.'.join(bpath['path'])
-                controller = bpath['controller']
-                action = None
-                params = []
+def get_template_params():
+    app = webapp2.get_app()
+    template_params = {}
+    template_params['base_url'] = webapp2.uri_for('index', _full=True)
+    template_params['scripts'] = list(app.config.get('template_scripts'))
+    template_params['head_scripts'] = []
+    template_params['styles'] = list(app.config.get('template_styles'))
 
-                if 'action' in bpath:
-                    action = bpath['action']
+    # Populate current year
+    template_params['current_year'] = datetime.date.today().year
 
-                if 'params' in bpath:
-                    params = bpath['params']
+    return template_params
 
-                try:
-                    mod = __import__(modpath, globals(), locals(), [controller], -1)
-                    the_class = getattr(mod, controller.title() + 'Controller')
-                    app_controller = the_class(request, response, action=action, method=method, params=[])
-                except ImportError:
-                    raise Http404Exception('Unable to import controller')
 
-        if app_controller is None:
-            raise Http404Exception('Unable to import controller')
+def handle_404(request, response, exception):
+    '''Handles 404 custom page'''
+    template_params = get_template_params()
+    logging.exception(exception)
+    requested_page = request.path
 
-        return app_controller
-
-    def is_valid_url_pattern(self, url):
-        """Returns true when url is valid"""
-        chunks = url.split('/')
-        ret = True
-        valid_pattern = '[a-z]+[a-z0-9_]+'
+    if request.query_string:
+        requested_page += '?%s' % request.query_string
         
-        for c in chunks:
-            if c:
-                if not re.match(valid_pattern, c):
-                    ret = False
-                    break
+    template_params['requested_page'] = requested_page
 
-        return ret
+    template = config.jinja_environment.get_template(os.path.join('http', 'http404.html'))
+    response.out.write(template.render(template_params))
+    response.set_status(404)
 
-    def get_controller_path(self, path, admin_dirs):
-        """Returns the path for importing modules for the controller"""
-        ret = {'path': ['dclab', 'lysender', 'controller']}
-        cpath = ''
-
-        if path == '' or path == '/':
-            ret['path'].append('index')
-            ret['controller'] = 'index'
-        else:
-            chunks = path.strip('/').split('/')
-            clen = len(chunks)
-
-            if clen > 0:
-                if len(chunks[0]) > 0:
-                    # Check if the first chunk is a directory
-                    if chunks[0] in admin_dirs:
-                        ret['path'].append(chunks[0])
-
-                        if clen > 1:
-                            chunks = chunks[1:]
-
-                    bpath = self.get_beyond_directory(chunks)
-                    if 'controller' in bpath:
-                        ret['path'].append(bpath['controller'])
-                        ret['controller'] = bpath['controller']
-                        if 'action' in bpath:
-                            ret['action'] = bpath['action']
-                            if 'params' in bpath:
-                                ret['params'] = bpath['params']
-
-        # The final path, action and params
-        return ret
-
-    def get_beyond_directory(self, chunks):
-        """Returns the values of url parts"""
-        ret = {}
-        clen = len(chunks)
-
-        if clen > 0:
-            ret['controller'] = chunks[0]
-            if clen > 1:
-                ret['action'] = chunks[1]
-                if clen > 2:
-                    ret['params'] = chunks[2:]
-
-        return ret
-
-    def dispatch(self, method):
-        """Default {method} response"""
-
-        self.action = None
-        self.params = []
-        self.controller = None
-        self.directory = None
-
-        try:
-            self.get_app_controller(self.request, self.response, method).dispatch()
-        except Http404Exception:
-            controller = http404.Http404Controller(self.request, self.response, action='index', method=method, params=[])
-            controller.dispatch()
-        except Http500Exception:
-            controller = http500.Http500Controller(self.request, self.response, action='index', method=method, params=[])
-            controller.dispatch()
-
-    def get(self):
-        """Default get response"""
-        self.dispatch('get')
-
-    def post(self):
-        """Default post response"""
-        self.dispatch('post')
+def handle_500(request, response, exception):
+    '''Handles application error custom page'''
+    template_params = get_template_params()
+    logging.exception(exception)
+    template_params['exception_args'] = exception.args
+    template = config.jinja_environment.get_template(os.path.join('http', 'http500.html'))
+    response.out.write(template.render(template_params))
+    response.set_status(500)

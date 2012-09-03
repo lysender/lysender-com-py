@@ -2,7 +2,7 @@ import hashlib
 import hmac
 import simplejson as json
 
-from google.appengine.ext import webapp
+import webapp2
 
 def generate_signature(key, parameters, sig_key='sig'):
     """Generates signature based on the passed key and parameters"""
@@ -17,7 +17,7 @@ def generate_signature(key, parameters, sig_key='sig'):
 
     return hmac.new(key, msg, hashlib.sha256).hexdigest()
 
-class RestHandler(webapp.RequestHandler):
+class RestHandler(webapp2.RequestHandler):
     """
     REST handler for rest requests accross the cluster
 

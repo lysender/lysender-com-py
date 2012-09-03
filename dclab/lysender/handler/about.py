@@ -1,14 +1,9 @@
+import os
 import datetime
+from dclab.handler.web import WebHandler
 
-from dclab.lysender.controller import BaseController
-
-class AboutController(BaseController):
-
-    template_dir = 'about'
-
-    def action_index(self):
-        self.template = 'index.html'
-
+class AboutHandler(WebHandler):
+    def get(self):
         # Compute my age
         birth_date = datetime.date(1985, 8, 8)
         today = datetime.date.today()
@@ -19,4 +14,5 @@ class AboutController(BaseController):
         elif today.month == birth_date.month and today.day < birth_date.day:
             age -= 1
 
-        self.template_values['age'] = age
+        self.template_params['age'] = age
+        self.render_template(os.path.join('about', 'index.html'))

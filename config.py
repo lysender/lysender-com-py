@@ -1,39 +1,28 @@
 import os
+import webapp2
+import jinja2
 
-project_dir = None
-template_dir = None
-initialized = False
+routes = [webapp2.Route(r'/', handler='dclab.lysender.handler.index.IndexHandler', name='index'),
+          webapp2.Route(r'/about', handler='dclab.lysender.handler.about.AboutHandler', name='about'),
+          webapp2.Route(r'/contact', handler='dclab.lysender.handler.contact.ContactHandler', name='contact'),
+          webapp2.Route(r'/projects', handler='dclab.lysender.handler.projects.ProjectsHandler:projects_list', name='projects_list', methods=['GET']),
+          webapp2.Route(r'/projects/chrome-time-in-time-out', handler='dclab.lysender.handler.projects.ProjectsHandler:projects_chrometito', name='projects_chrometito', methods=['GET']),
+          webapp2.Route(r'/extra', handler='dclab.lysender.handler.extra.index.IndexHandler', name='extra_index'),
+          webapp2.Route(r'/extra/sprint', handler='dclab.lysender.handler.extra.sprint.SprintHandler:sprint_list', name='sprint_list', methods=['GET']),
+          webapp2.Route(r'/extra/sprint/<sprint_letter:[a-z]>', handler='dclab.lysender.handler.extra.sprint.SprintHandler:sprint_letter', name='sprint_letter', methods=['GET']),
+          webapp2.Route(r'/extra/tools', handler='dclab.lysender.handler.extra.tools.index.IndexHandler', name='tools_index'),
+          webapp2.Route(r'/extra/tools/base64', handler='dclab.lysender.handler.extra.tools.base64.Base64Handler', name='tools_base64'),
+          webapp2.Route(r'/extra/tools/urlencode', handler='dclab.lysender.handler.extra.tools.urlencode.UrlencodeHandler', name='tools_urlencode'),
+          webapp2.Route(r'/extra/tools/sumfirstcol', handler='dclab.lysender.handler.extra.tools.sumfirstcol.SumfirstcolHandler', name='tools_sumfirstcol')]
 
-controller_dirs = ['admin']
+template_dir = 'templates'
 
-def initialize():
-    global initialized
+jinja_environment = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__), template_dir)))
 
-    if not initialized:
-        initialized = True
-        init_paths()
-        init_django()
-
-def init_paths():
-    global project_dir
-    global template_dir
-    
-    base_path = os.path.dirname(__file__)
-    project_dir = base_path
-    template_dir = os.path.join(base_path, 'templates')
-
-def init_django():
-    # Must set this env var before importing any part of Django
-    # 'project' is the name of the project created with django-admin.py
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
-    from google.appengine.dist import use_library
-    use_library('django', '1.2')
-
-    # Force Django to reload its settings.
-    from django.conf import settings
-
-    # Not sure why this works, but it fixes the templates.
-    settings.configure(INSTALLED_APPS=('nothing',))
-
-def is_initialized():
-    return initialized
+config = {
+    'template_dir': template_dir,
+    'template_styles': ['media/bootstrap/css/bootstrap.min.css', 'media/css/style.css'],
+    'template_scripts': ['media/js/jquery-1.6.4.min.js'],
+    'jinja_environment': jinja_environment,
+}

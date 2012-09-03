@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Lysender :: Contact{% endblock %}
+
+{% block headdesc %}
+<meta name="description" content="Contact Lysender" />
+{% endblock %}
+
+{% block headkeywords %}
+<meta name="keywords" content="contact, lysender, info" />
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="span1">
+        <img src="{{ base_url }}media/images/letter_64.png" alt="contact" />
+    </div>
+    
+    <div class="about-info span8">
+        <h2 class="fancy"><a href="{{ base_url }}contact">Contact</a></h2>
+        
+        <p>Because of some webhost limitations, Lysender cannot setup a mailer script
+        for this site. However, you can directly send email to lysender at:<br />
+        <br />
+        <span>leonel [at] lysender [dot] com</span><br />
+        <br />
+        or send tweets to:<br />
+        <br />
+        <a href="http://twitter.com/lysender">Twitter</a></p>
+        
+        <p>Lysender usually hangs out at: <br />
+        <br />
+        <a href="http://friendfeed.com/lysender">Friendfeed</a></p>
+    </div>
+</div>
+{% endblock %}

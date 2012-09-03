@@ -13,11 +13,11 @@
 {% block content %}
 <div class="row">
     <div class="span1">
-        <img src="/media/images/user_info_64.png" alt="about" />
+        <img src="{{ base_url }}media/images/user_info_64.png" alt="about" />
     </div>
     
     <div class="about-info span8">
-        <h2 class="fancy"><a href="<?php echo URL::site('/about', TRUE) ?>">About</a></h2>
+        <h2 class="fancy"><a href="{{ base_url }}about">About</a></h2>
         
         <p>Lysender is a {{ age }} year-old web developer from
         Antipolo City, Rizal Philippines. He is currently employed as a PHP Developer

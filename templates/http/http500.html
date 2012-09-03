@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Lysender :: Application Error{% endblock %}
+
+{% block content %}
+<div class="span12">
+    <h1><strong>500 Error:</strong> Application error</h1>
+    
+    <p>Something went really really wrong. We have been notified about the issue and will be fixing it ASAP. Please try again leter.</p>
+
+    <p>Below are the messages received.</p>
+
+    <ul>
+        {% for message in exception_args %}
+            <li><code>{{ message }}</code></li>
+        {% endfor %}
+    </ul>
+    
+    <p>It is either not existing, moved or deleted. 
+    Make sure the URL is correct. </p>
+    
+    <p>To go back to the previous page, click the Back button.</p>
+    
+    <p><a href="/">If you wanted to go to the main page instead, click here.</a></p>
+</div>
+{% endblock %}
