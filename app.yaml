@@ -12,6 +12,15 @@ handlers:
 - url: /favicon.ico
   static_files: media/favicon.ico
   upload: media/favicon.ico
+- url: /robots.txt
+  static_files: media/robots.txt
+  upload: media/robots.txt
+- url: /googlehostedservice.html
+  static_files: media/googlehostedservice.html
+  upload: media/googlehostedservice.html
+- url: /googlebf4c56384f8fc253.html
+  static_files: media/googlebf4c56384f8fc253.html
+  upload: media/googlebf4c56384f8fc253.html
 - url: /media
   static_dir: media
 - url: /.*

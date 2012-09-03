@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /2010/*
+Disallow: /2009/*
+Disallow: /2008/*
+Disallow: /about-2
+Disallow: /category/*
+Disallow: /wp-*
+Disallow: /page*
+Disallow: /comments*
+Allow: /
