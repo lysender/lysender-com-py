@@ -13,7 +13,8 @@ routes = [webapp2.Route(r'/', handler='dclab.lysender.handler.index.IndexHandler
           webapp2.Route(r'/extra/tools', handler='dclab.lysender.handler.extra.tools.index.IndexHandler', name='tools_index'),
           webapp2.Route(r'/extra/tools/base64', handler='dclab.lysender.handler.extra.tools.base64.Base64Handler', name='tools_base64'),
           webapp2.Route(r'/extra/tools/urlencode', handler='dclab.lysender.handler.extra.tools.urlencode.UrlencodeHandler', name='tools_urlencode'),
-          webapp2.Route(r'/extra/tools/sumfirstcol', handler='dclab.lysender.handler.extra.tools.sumfirstcol.SumfirstcolHandler', name='tools_sumfirstcol')]
+          webapp2.Route(r'/extra/tools/sumfirstcol', handler='dclab.lysender.handler.extra.tools.sumfirstcol.SumfirstcolHandler', name='tools_sumfirstcol'),
+          webapp2.Route(r'/sitemap.xml', handler='dclab.lysender.handler.sitemap.IndexHandler', name='sitemap')]
 
 template_dir = 'templates'
 in_production = True

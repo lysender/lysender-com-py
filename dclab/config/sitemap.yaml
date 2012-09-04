@@ -1,0 +1,22 @@
+# Sitemap
+monthly:
+  - ['', 1.0]
+  - ['about', 0.5]
+  - ['projects', 0.5]
+  - ['extra', 0.5]
+  - ['contact', 0.2]
+  - ['projects/chrome-time-in-time-out', 0.8]
+  - ['extra/sprint', 0.8]
+  - ['extra/tools', 0.8]
+  - ['extra/tools/urlencode', 0.8]
+  - ['extra/tools/worldclock', 0.8]
+  - ['extra/tools/base64', 0.8]
+  - ['extra/tools/sumfirstcol', 0.8]
+weekly:
+  - ['extra/sprint/e', 0.5]
+  - ['extra/sprint/f', 0.5]
+  - ['extra/sprint/g', 0.5]
+  - ['extra/sprint/h', 0.5]
+  - ['extra/sprint/i', 0.5]
+  - ['extra/sprint/j', 0.5]
+  - ['extra/sprint/k', 0.5]

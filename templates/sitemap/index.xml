@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for freq,group in sitemap_basic.items() -%}
+{% for item in group -%}
+    <url>
+        <loc>{{ base_url }}{{ item[0] }}</loc>
+        <changefreq>{{ freq }}</changefreq>
+        <priority>{{ item[1] }}</priority>
+    </url>
+{%- endfor %}
+{%- endfor %}
+</urlset>
