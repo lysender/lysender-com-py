@@ -23,6 +23,9 @@ handlers:
 - url: /googlebf4c56384f8fc253.html
   static_files: media/googlebf4c56384f8fc253.html
   upload: media/googlebf4c56384f8fc253.html
+- url: /labels.rdf
+  static_files: media/labels.rdf
+  upload: media/labels.rdf
 - url: /media
   static_dir: media
   expiration: "365d"
