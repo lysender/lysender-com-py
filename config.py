@@ -14,7 +14,12 @@ routes = [webapp2.Route(r'/', handler='dclab.lysender.handler.index.IndexHandler
           webapp2.Route(r'/extra/tools/base64', handler='dclab.lysender.handler.extra.tools.base64.Base64Handler', name='tools_base64'),
           webapp2.Route(r'/extra/tools/urlencode', handler='dclab.lysender.handler.extra.tools.urlencode.UrlencodeHandler', name='tools_urlencode'),
           webapp2.Route(r'/extra/tools/sumfirstcol', handler='dclab.lysender.handler.extra.tools.sumfirstcol.SumfirstcolHandler', name='tools_sumfirstcol'),
-          webapp2.Route(r'/sitemap.xml', handler='dclab.lysender.handler.sitemap.IndexHandler', name='sitemap')]
+          webapp2.Route(r'/extra/tools/worldclock', handler='dclab.lysender.handler.extra.tools.worldclock.WorldclockHandler', name='tools_worldclock'),
+          webapp2.Route(r'/extra/tools/worldclock/<ident1:[-+0-9a-zA-Z_]+>', handler='dclab.lysender.handler.extra.tools.worldclock.WorldclockHandler:specific_timezone', name='tools_worldclock_selected', methods=['GET']),
+          webapp2.Route(r'/extra/tools/worldclock/<ident1:[-+0-9a-zA-Z_]+>/<ident2:[-+0-9a-zA-Z_]+>', handler='dclab.lysender.handler.extra.tools.worldclock.WorldclockHandler:specific_timezone', name='tools_worldclock_selected', methods=['GET']),
+          webapp2.Route(r'/extra/tools/worldclock/<ident1:[-+0-9a-zA-Z_]+>/<ident2:[-+0-9a-zA-Z_]+>/<ident3:[-+0-9a-zA-Z_]+>', handler='dclab.lysender.handler.extra.tools.worldclock.WorldclockHandler:specific_timezone', name='tools_worldclock_selected', methods=['GET']),
+          webapp2.Route(r'/sitemap.xml', handler='dclab.lysender.handler.sitemap.IndexHandler', name='sitemap'),
+          webapp2.Route(r'/task/tzupdate', handler='dclab.lysender.handler.task.tzupdate.IndexHandler', name='task_tzupdate')]
 
 template_dir = 'templates'
 in_production = True

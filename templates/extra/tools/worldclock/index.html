@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}Lysender :: {{ page_title }}{% endblock %}
+
+{% block headdesc %}
+<meta name="description" content="{{ page_desc }}" />
+{% endblock %}
+
+{% block headkeywords %}
+<meta name="keywords" content="world, clock, timezone" />
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="span1">
+        <img src="{{ base_url }}media/images/box-64x64.gif" alt="tools" />
+    </div>
+    
+    <div class="about-info span11">
+        <div class="row">
+    
+            <div class="span11">
+                <h2 class="fancy"><a href="{{ base_url }}extra/tools/worldclock">World Clock</a></h2>
+                
+                <p>This tool allows you to define your word clock widget as many as you like and display them for quick reference.<br />
+                The widgets created are saved so that they will be displayed on your next visit.</p>
+            </div>
+
+            {% if selected_timezone and formatted_timezone %}
+                <div class="span11" id="worldclock-widget-current-w">
+                    <h2 class="thin">Current time for {{ formatted_timezone }}</h2>
+                </div>
+            {% endif %}
+
+            <div class="span11" id="workdclock-widget-w">
+                <h2 class="thin">Your World Clock widgets</h2>
+            </div>
+            
+            <div class="span11">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <legend>Add a new world clock widget</legend>
+                        <div class="control-group">
+                            <label class="control-label">Select region</label>
+                            <div class="controls" id="region-select-w">
+                                <select id="regions" name="regions"></select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Select timezone</label>
+                            <div class="controls">
+                                <select id="timezone" name="timezone" disabled="disabled"></select>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <input type="button" name="add-tz" id="add-tz" class="btn btn-primary icon-plus" value="Add new clock" disabled="disabled" />
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            
+            <div class="span11">
+                <p>Timezones around the world.</p>
+                <ul id="timezone-list">
+                    {% for k in timezones_keys %}
+                        <li><a href="{{ base_url }}extra/tools/worldclock/{{ k|e }}">{{ k|e }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="span11">
+                <p class="push-down-3">For comments and suggestions, <a href="http://blog.lysender.com/2012/03/yet-another-world-clock/">see the blog post</a>. Enjoy and share.</p>
+            </div>
+        
+            <div class="span11">
+                <a class="fblike-single" href="http://www.facebook.com/plugins/like.php?href={{ page_urlencoded }}&amp;layout=standard&amp;show_faces=false&amp;width=450&amp;action=like&amp;font&amp;colorscheme=light&amp;height=35"></a>
+            </div>
+            
+            <div class="span11">
+                <g:plusone annotation="inline" href="{{ base_url }}extra/tools/worldclock"></g:plusone>
+            </div>
+        </div><!-- row -->
+    </div><!-- span11 -->
+</div><!-- wor -->
+{% endblock %}
