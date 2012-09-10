@@ -29,5 +29,8 @@ handlers:
 - url: /media
   static_dir: media
   expiration: "365d"
+- url: /task/tzupdate
+  script: web.app
+  login: admin
 - url: /.*
   script: web.app

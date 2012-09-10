@@ -2,4 +2,3 @@ cron:
 - description: Hourly timezone lookup update
   url: /task/tzupdate
   schedule: every 50 minutes
-  login: admin
