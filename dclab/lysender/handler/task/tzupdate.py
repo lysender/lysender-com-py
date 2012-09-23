@@ -21,4 +21,4 @@ class IndexHandler(WebHandler):
             except pytz.exceptions.UnknownTimeZoneError:
                 offset = 0
             tz_offsets[tz] = offset
-        memcache.set('worldclock_offset_lookup', tz_offsets, 3600)
+        memcache.set('worldclock_offset_lookup', tz_offsets, 86400)
