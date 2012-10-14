@@ -22,6 +22,7 @@ routes = [webapp2.Route(r'/', handler='dclab.lysender.handler.index.IndexHandler
           webapp2.Route(r'/sitemap.xml', handler='dclab.lysender.handler.sitemap.IndexHandler', name='sitemap'),
           webapp2.Route(r'/task/tzupdate', handler='dclab.lysender.handler.task.tzupdate.IndexHandler', name='task_tzupdate')]
 
+app_version = '2.1.0'
 template_dir = 'templates'
 in_production = True
 analytics_config = {}
@@ -40,5 +41,6 @@ config = {
     'template_scripts': ['media/js/jquery-1.6.4.min.js', 'media/js/analytics.js'],
     'jinja_environment': jinja_environment,
     'show_google_analytics': True,
-    'analytics_config': analytics_config 
+    'analytics_config': analytics_config,
+    'cache_buster': '?v=' + app_version
 }

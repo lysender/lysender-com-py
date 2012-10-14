@@ -28,6 +28,7 @@ class WebHandler(webapp2.RequestHandler):
 def get_template_params():
     app = webapp2.get_app()
     template_params = {}
+    template_params['cache_buster'] = app.config.get('cache_buster')
     template_params['base_url'] = webapp2.uri_for('index', _full=True)
     template_params['scripts'] = list(app.config.get('template_scripts'))
     template_params['head_scripts'] = []
