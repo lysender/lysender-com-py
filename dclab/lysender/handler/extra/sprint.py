@@ -14,6 +14,7 @@ class SprintHandler(WebHandler):
         self.template_params['show_google_plusone'] = True
         self.template_params['show_facebook_like'] = True
 
+        self.set_ga_tags('extras_sprint', None)
         self.render_template(os.path.join('extra', 'sprint', 'index.html'))
 
     def sprint_letter(self, **kwargs):
@@ -42,4 +43,6 @@ class SprintHandler(WebHandler):
             self.template_params['has_list'] = True
 
         self.template_params['scripts'].append('media/js/sprint.js')
+        page_name = 'Extras - Sprint %s' % kwargs['sprint_letter'].upper()
+        self.set_ga_tags('extras_sprint_letter', {'page_name': page_name, 'sub_section': page_name})
         self.render_template(os.path.join('extra', 'sprint', 'letter.html'))

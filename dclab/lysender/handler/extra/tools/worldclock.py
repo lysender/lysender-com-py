@@ -33,6 +33,7 @@ class WorldclockHandler(WebHandler):
         self.template_params['page_title'] = 'Extras - Tools - World Clock'
         self.template_params['page_desc'] = 'Extras - Tools - World Clock'
 
+        self.set_ga_tags('tools_worldclock', None)
         self.set_shared_params(lookup, tz_group)
 
     def specific_timezone(self, **kwargs):
@@ -56,6 +57,8 @@ class WorldclockHandler(WebHandler):
         self.template_params['page_title'] = '%s - World Clock' % formatted_timezone
         self.template_params['page_desc'] = '%s - World Clock' % formatted_timezone
         self.template_params['head_scripts'].append('var selected_timezone = %s' % json.dumps(selected_timezone))
+        page_name = 'Tools - Worldc Clock %s' % selected_timezone
+        self.set_ga_tags('tools_worldclock_specific', {'page_name': page_name, 'sub_section': page_name})
         self.set_shared_params(lookup, tz_group)
 
     def get_timezone_offset_lookup(self):

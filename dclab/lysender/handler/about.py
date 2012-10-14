@@ -15,4 +15,5 @@ class AboutHandler(WebHandler):
             age -= 1
 
         self.template_params['age'] = age
+        self.set_ga_tags('about', None)
         self.render_template(os.path.join('about', 'index.html'))

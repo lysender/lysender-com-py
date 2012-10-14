@@ -12,6 +12,15 @@ class WebHandler(webapp2.RequestHandler):
         self.initialize(request, response)
         self.template_params = get_template_params()
 
+    def set_ga_tags(self, index, extra):
+        tags = get_page_tags(index)
+        if extra:
+            for k,v in extra.items():
+                tags[k]['value'] = v
+        if tags:
+            self.template_params['has_ga_tags'] = True
+            self.template_params['ga_tags'] = tags
+
     def render_template(self, template_file):
         template = config.jinja_environment.get_template(template_file)
         self.response.out.write(template.render(self.template_params))
@@ -30,6 +39,10 @@ def get_template_params():
 
     return template_params
 
+def get_page_tags(index):
+    if index in config.analytics_config:
+        return config.analytics_config[index]
+    return None
 
 def handle_404(request, response, exception):
     '''Handles 404 custom page'''

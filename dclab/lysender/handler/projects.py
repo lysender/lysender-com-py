@@ -34,6 +34,7 @@ class ProjectsHandler(WebHandler):
                 'mapping.png'
             ]       
         }
+        self.set_ga_tags('projects', None)
         self.render_template(os.path.join('projects', 'index.html'))
 
     def projects_chrometito(self):
@@ -49,5 +50,5 @@ class ProjectsHandler(WebHandler):
                 'chrome-tito-option-page.png',
             ]
         }
-
+        self.set_ga_tags('projects_chrometito', None)
         self.render_template(os.path.join('projects', 'chrometito.html'))

@@ -10,4 +10,5 @@ class UrlencodeHandler(WebHandler):
         self.template_params['page_urlencoded'] = urllib.quote_plus('%sextra/tools/urlencode' % self.template_params['base_url'])
         self.template_params['show_google_plusone'] = True
         self.template_params['show_facebook_like'] = True
+        self.set_ga_tags('tools_urlencode', None)
         self.render_template(os.path.join('extra', 'tools', 'urlencode', 'index.html'))

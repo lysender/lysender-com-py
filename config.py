@@ -1,6 +1,7 @@
 import os
 import webapp2
 import jinja2
+import dclab
 
 routes = [webapp2.Route(r'/', handler='dclab.lysender.handler.index.IndexHandler', name='index'),
           webapp2.Route(r'/about', handler='dclab.lysender.handler.about.AboutHandler', name='about'),
@@ -23,7 +24,7 @@ routes = [webapp2.Route(r'/', handler='dclab.lysender.handler.index.IndexHandler
 
 template_dir = 'templates'
 in_production = True
-
+analytics_config = {}
 
 if os.environ['SERVER_SOFTWARE'].startswith('Dev'):
     in_production = False
@@ -31,10 +32,13 @@ if os.environ['SERVER_SOFTWARE'].startswith('Dev'):
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__), template_dir)))
 
+analytics_config = dclab.get_yaml_config('analytics.yaml')
+
 config = {
     'template_dir': template_dir,
     'template_styles': ['media/bootstrap/css/bootstrap.min.css', 'media/css/style.css'],
     'template_scripts': ['media/js/jquery-1.6.4.min.js'],
     'jinja_environment': jinja_environment,
-    'show_google_analytics': in_production,
+    'show_google_analytics': True,
+    'analytics_config': analytics_config 
 }

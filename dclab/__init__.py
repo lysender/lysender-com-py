@@ -1,6 +1,8 @@
 # DC Lab Cluster helpers
 
+import os
 import uuid
+import yaml
 import datetime
 
 def generate_uuid():
@@ -17,3 +19,16 @@ def get_valid_date(str_date, format='%Y-%m-%d'):
             ret = None
             
     return ret
+
+def get_yaml_config(filename):
+    """Returns a config object from a yaml document"""
+    config = {}
+    filename = os.path.join('dclab', 'config', filename)
+    try:
+        stream = file(filename, 'r')
+        config = yaml.load(stream)
+        stream.close()
+    except IOError:
+        config = {}
+
+    return config
