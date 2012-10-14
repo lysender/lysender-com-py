@@ -43,7 +43,7 @@
                         {% for image in project_images['chrome-tito'] %}
                             <li class="span3">
                                 <a class="thumbnail" href="{{ base_url }}media/images/portfolio/chrome-tito/{{ image }}">
-                                    <img src="{{ base_url }}media/images/portfolio/chrome-tito/{{ image }}" alt="Chrome project image" />
+                                    <img src="{{ base_url }}media/images/portfolio/chrome-tito/{{ image }}" alt="Chrome project image" class="ga-track" data-category="Project Images" data-action="View Thumbnail" data-label="Chrome TITO Project Image {{ loop.index }}" />
                                 </a>
                             </li>
                         {% endfor %}

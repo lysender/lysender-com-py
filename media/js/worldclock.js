@@ -188,6 +188,9 @@ $(function(){
 
         // Reset dropdowns
         resetAddWidgetForm();
+
+        // GA tagging
+        fire_ga_event("World Clock Widget", "Add Widget", wconfig[0]);
 	});
 
 	$("#region-select-w").delegate("#regions", "change", function(){
@@ -199,6 +202,14 @@ $(function(){
 		var index = parseInt(id.split("-").pop());
 		
 		if (!isNaN(index)) {
+			// GA tagging
+			var wid = "#worldclock-widget-wid-" + index;
+			var timezone = $(wid).find(".wc-timezone").text();
+			
+			if (timezone) {
+				fire_ga_event("World Clock Widget", "Remove Widget", timezone);
+			}
+
 			deleteWcWidget(index);
 		}
 	});

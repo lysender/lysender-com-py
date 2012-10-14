@@ -37,7 +37,7 @@ analytics_config = dclab.get_yaml_config('analytics.yaml')
 config = {
     'template_dir': template_dir,
     'template_styles': ['media/bootstrap/css/bootstrap.min.css', 'media/css/style.css'],
-    'template_scripts': ['media/js/jquery-1.6.4.min.js'],
+    'template_scripts': ['media/js/jquery-1.6.4.min.js', 'media/js/analytics.js'],
     'jinja_environment': jinja_environment,
     'show_google_analytics': True,
     'analytics_config': analytics_config 

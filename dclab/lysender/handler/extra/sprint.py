@@ -35,14 +35,17 @@ class SprintHandler(WebHandler):
         except IOError:
             config = {}
 
+        page_name = 'Extras - Sprint %s' % kwargs['sprint_letter'].upper()
+
         # Inject head script for global sprint variables on js
         if 'adjectives' in config and 'animals' in config:
             head_script = 'var sprintAdj = %s; var sprintAnimals = %s' % (json.dumps(config['adjectives']),
                                                                           json.dumps(config['animals']))
             self.template_params['head_scripts'].append(head_script)
             self.template_params['has_list'] = True
+        else:
+            page_name += ' - No List Yet'
 
         self.template_params['scripts'].append('media/js/sprint.js')
-        page_name = 'Extras - Sprint %s' % kwargs['sprint_letter'].upper()
         self.set_ga_tags('extras_sprint_letter', {'page_name': page_name, 'sub_section': page_name})
         self.render_template(os.path.join('extra', 'sprint', 'letter.html'))

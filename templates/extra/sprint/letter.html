@@ -37,7 +37,7 @@
                     {% if has_list %}
                         <div id="suggestion-w"></div>
                         <p>
-                            <a href="javascript:void(0);" class="btn btn-primary" id="btn-generate">Generate suggestions</a>
+                            <a href="javascript:void(0);" class="btn btn-primary ga-track" id="btn-generate" data-category="Sprint Name" data-action="Generate Sprint Name" data-label="Sprint Letter {{ sprint_letter|upper }}">Generate suggestions</a>
                         </p>
                     {% else %}
                         <div class="alert alert-error">
