@@ -10,6 +10,6 @@ $(function(){
 
 function fire_ga_event(category, action, label) {
     if (typeof _gaq !== "undefined") {
-        _gaq.push(['_trackEvent', category, action, label]);
+        _gaq.push(['_trackEvent', category, action, label, 0, true]);
     }
 }
