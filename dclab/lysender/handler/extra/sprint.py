@@ -47,5 +47,5 @@ class SprintHandler(WebHandler):
             page_name += ' - No List Yet'
 
         self.template_params['scripts'].append('media/js/sprint.js')
-        self.set_ga_tags('extras_sprint_letter', {'page_name': page_name, 'sub_section': page_name})
+        self.set_ga_tags('extras_sprint_letter', {'sub_section': page_name})
         self.render_template(os.path.join('extra', 'sprint', 'letter.html'))

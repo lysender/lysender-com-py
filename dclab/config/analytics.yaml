@@ -1,141 +1,99 @@
 ---
 index:
-  page_name:
+  section:
     slot: 1
     value: 'Home Page'
-  section:
-    slot: 2
-    value: 'Home Page'
   sub_section:
-    slot: 3
+    slot: 2
     value: 'Home Page'
 about:
-  page_name:
+  section:
     slot: 1
     value: 'About Us'
-  section:
-    slot: 2
-    value: 'About Us'
   sub_section:
-    slot: 3
+    slot: 2
     value: 'About Us'
 projects:
-  page_name:
-    slot: 1
-    value: 'Projects Index'
   section:
-    slot: 2
+    slot: 1
     value: 'Projects'
   sub_section:
-    slot: 3
+    slot: 2
     value: 'Projects Index'
 projects_chrometito:
-  page_name:
-    slot: 1
-    value: 'Projects - Chrome TITO'
   section:
-    slot: 2
+    slot: 1
     value: 'Projects'
   sub_section:
-    slot: 3
+    slot: 2
     value: 'Projects - Chrome TITO'
 extras:
-  page_name:
-    slot: 1
-    value: 'Extras Index'
   section:
-    slot: 2
+    slot: 1
     value: 'Extras'
   sub_section:
-    slot: 3
+    slot: 2
     value: 'Extras Index'
 extras_sprint:
-  page_name:
-    slot: 1
-    value: 'Extras  - Sprint'
   section:
-    slot: 2
+    slot: 1
     value: 'Extras'
   sub_section:
-    slot: 3
+    slot: 2
     value: 'Extras - Sprint'
 extras_sprint_letter:
-  page_name:
-    slot: 1
-    value: 'Extras  - Sprint Letter'
   section:
-    slot: 2
+    slot: 1
     value: 'Extras'
   sub_section:
-    slot: 3
+    slot: 2
     value: 'Extras - Sprint Letter'
 tools:
-  page_name:
-    slot: 1
-    value: 'Tools Index'
   section:
-    slot: 2
+    slot: 1
     value: 'Tools'
   sub_section:
-    slot: 3
+    slot: 2
     value: 'Tools Index'
 tools_base64:
-  page_name:
-    slot: 1
-    value: 'Tools - Base64'
   section:
-    slot: 2
+    slot: 1
     value: 'Tools'
   sub_section:
-    slot: 3
+    slot: 2
     value: 'Tools - Base64'
 tools_sumfirstcol:
-  page_name:
-    slot: 1
-    value: 'Tools - Sum First Column'
   section:
-    slot: 2
+    slot: 1
     value: 'Tools'
   sub_section:
-    slot: 3
+    slot: 2
     value: 'Tools - Sum First Column'
 tools_urlencode:
-  page_name:
-    slot: 1
-    value: 'Tools - URL Encode'
   section:
-    slot: 2
+    slot: 1
     value: 'Tools'
   sub_section:
-    slot: 3
+    slot: 2
     value: 'Tools - URL Encode'
 tools_worldclock:
-  page_name:
-    slot: 1
-    value: 'Tools - World Clock'
   section:
-    slot: 2
+    slot: 1
     value: 'Tools'
   sub_section:
-    slot: 3
+    slot: 2
     value: 'Tools - World Clock'
 tools_worldclock_specific:
-  page_name:
-    slot: 1
-    value: 'Tools - World Clock Specific'
   section:
-    slot: 2
+    slot: 1
     value: 'Tools'
   sub_section:
-    slot: 3
+    slot: 2
     value: 'Tools - World Clock Specific'
 contact:
-  page_name:
+  section:
     slot: 1
     value: 'Contact'
-  section:
-    slot: 2
-    value: 'Contact'
   sub_section:
-    slot: 3
+    slot: 2
     value: 'Contact'
