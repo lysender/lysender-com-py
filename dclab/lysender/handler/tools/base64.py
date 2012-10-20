@@ -18,4 +18,4 @@ class Base64Handler(WebHandler):
         self.template_params['show_google_plusone'] = True
         self.template_params['show_facebook_like'] = True
         self.set_ga_tags('tools_base64', None)
-        self.render_template(os.path.join('extra', 'tools', 'base64', 'index.html'))
+        self.render_template(os.path.join('tools', 'base64', 'index.html'))

@@ -11,7 +11,7 @@
 {%- endfor %}
 {% for tz in sitemap_worldclock -%}
     <url>
-        <loc>{{ base_url }}extra/tools/worldclock/{{ tz }}</loc>
+        <loc>{{ base_url }}tools/worldclock/{{ tz }}</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>

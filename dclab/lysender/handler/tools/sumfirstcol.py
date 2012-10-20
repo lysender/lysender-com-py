@@ -14,4 +14,4 @@ class SumfirstcolHandler(WebHandler):
         self.template_params['show_google_plusone'] = True
         self.template_params['show_facebook_like'] = True
         self.set_ga_tags('tools_sumfirstcol', None)
-        self.render_template(os.path.join('extra', 'tools', 'sumfirstcol', 'index.html'))
+        self.render_template(os.path.join('tools', 'sumfirstcol', 'index.html'))

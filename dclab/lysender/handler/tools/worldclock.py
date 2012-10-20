@@ -21,17 +21,17 @@ class WorldclockHandler(WebHandler):
         self.template_params['scripts'].extend(['media/js/json2_min.js',
                                                 'media/js/cookiegroup.js',
                                                 'media/js/worldclock.js'])
-        self.template_params['page_urlencoded'] = urllib.quote_plus('%sextra/tools/worldclock' % self.template_params['base_url'])
+        self.template_params['page_urlencoded'] = urllib.quote_plus('%stools/worldclock' % self.template_params['base_url'])
         self.template_params['show_google_plusone'] = True
         self.template_params['show_facebook_like'] = True
-        self.render_template(os.path.join('extra', 'tools', 'worldclock', 'index.html'))        
+        self.render_template(os.path.join('tools', 'worldclock', 'index.html'))        
 
     def get(self):
         lookup = self.get_timezone_offset_lookup()
         tz_group = self.get_timezones_by_region(lookup)
 
-        self.template_params['page_title'] = 'Extras - Tools - World Clock'
-        self.template_params['page_desc'] = 'Extras - Tools - World Clock'
+        self.template_params['page_title'] = 'Tools - World Clock'
+        self.template_params['page_desc'] = 'Tools - World Clock'
 
         self.set_ga_tags('tools_worldclock', None)
         self.set_shared_params(lookup, tz_group)
@@ -58,7 +58,7 @@ class WorldclockHandler(WebHandler):
         self.template_params['page_desc'] = '%s - World Clock' % formatted_timezone
         self.template_params['head_scripts'].append('var selected_timezone = %s' % json.dumps(selected_timezone))
         page_name = 'Tools - Worldc Clock %s' % selected_timezone
-        self.set_ga_tags('tools_worldclock_specific', {'page_name': page_name, 'sub_section': page_name})
+        self.set_ga_tags('tools_worldclock_specific', {'sub_section': page_name})
         self.set_shared_params(lookup, tz_group)
 
     def get_timezone_offset_lookup(self):

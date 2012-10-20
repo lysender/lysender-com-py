@@ -20,7 +20,7 @@
         <div class="row">
     
             <div class="span11">
-                <h2 class="fancy"><a href="{{ base_url }}extra/tools/worldclock">World Clock</a></h2>
+                <h2 class="fancy"><a href="{{ base_url }}tools/worldclock">World Clock</a></h2>
                 
                 <p>This tool allows you to define your word clock widget as many as you like and display them for quick reference.<br />
                 The widgets created are saved so that they will be displayed on your next visit.</p>
@@ -63,7 +63,7 @@
                 <p>Timezones around the world.</p>
                 <ul id="timezone-list">
                     {% for k in timezones_keys %}
-                        <li><a href="{{ base_url }}extra/tools/worldclock/{{ k|e }}">{{ k|e }}</a></li>
+                        <li><a href="{{ base_url }}tools/worldclock/{{ k|e }}">{{ k|e }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
@@ -77,7 +77,7 @@
             </div>
             
             <div class="span11">
-                <g:plusone annotation="inline" href="{{ base_url }}extra/tools/worldclock"></g:plusone>
+                <g:plusone annotation="inline" href="{{ base_url }}tools/worldclock"></g:plusone>
             </div>
         </div><!-- row -->
     </div><!-- span11 -->

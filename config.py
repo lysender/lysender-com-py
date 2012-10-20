@@ -11,18 +11,18 @@ routes = [webapp2.Route(r'/', handler='dclab.lysender.handler.index.IndexHandler
           webapp2.Route(r'/extra', handler='dclab.lysender.handler.extra.index.IndexHandler', name='extra_index'),
           webapp2.Route(r'/extra/sprint', handler='dclab.lysender.handler.extra.sprint.SprintHandler:sprint_list', name='sprint_list', methods=['GET']),
           webapp2.Route(r'/extra/sprint/<sprint_letter:[a-z]>', handler='dclab.lysender.handler.extra.sprint.SprintHandler:sprint_letter', name='sprint_letter', methods=['GET']),
-          webapp2.Route(r'/extra/tools', handler='dclab.lysender.handler.extra.tools.index.IndexHandler', name='tools_index'),
-          webapp2.Route(r'/extra/tools/base64', handler='dclab.lysender.handler.extra.tools.base64.Base64Handler', name='tools_base64'),
-          webapp2.Route(r'/extra/tools/urlencode', handler='dclab.lysender.handler.extra.tools.urlencode.UrlencodeHandler', name='tools_urlencode'),
-          webapp2.Route(r'/extra/tools/sumfirstcol', handler='dclab.lysender.handler.extra.tools.sumfirstcol.SumfirstcolHandler', name='tools_sumfirstcol'),
-          webapp2.Route(r'/extra/tools/worldclock', handler='dclab.lysender.handler.extra.tools.worldclock.WorldclockHandler', name='tools_worldclock'),
-          webapp2.Route(r'/extra/tools/worldclock/<ident1:[-+0-9a-zA-Z_]+>', handler='dclab.lysender.handler.extra.tools.worldclock.WorldclockHandler:specific_timezone', name='tools_worldclock_selected', methods=['GET']),
-          webapp2.Route(r'/extra/tools/worldclock/<ident1:[-+0-9a-zA-Z_]+>/<ident2:[-+0-9a-zA-Z_]+>', handler='dclab.lysender.handler.extra.tools.worldclock.WorldclockHandler:specific_timezone', name='tools_worldclock_selected', methods=['GET']),
-          webapp2.Route(r'/extra/tools/worldclock/<ident1:[-+0-9a-zA-Z_]+>/<ident2:[-+0-9a-zA-Z_]+>/<ident3:[-+0-9a-zA-Z_]+>', handler='dclab.lysender.handler.extra.tools.worldclock.WorldclockHandler:specific_timezone', name='tools_worldclock_selected', methods=['GET']),
+          webapp2.Route(r'/tools', handler='dclab.lysender.handler.tools.index.IndexHandler', name='tools_index'),
+          webapp2.Route(r'/tools/base64', handler='dclab.lysender.handler.tools.base64.Base64Handler', name='tools_base64'),
+          webapp2.Route(r'/tools/urlencode', handler='dclab.lysender.handler.tools.urlencode.UrlencodeHandler', name='tools_urlencode'),
+          webapp2.Route(r'/tools/sumfirstcol', handler='dclab.lysender.handler.tools.sumfirstcol.SumfirstcolHandler', name='tools_sumfirstcol'),
+          webapp2.Route(r'/tools/worldclock', handler='dclab.lysender.handler.tools.worldclock.WorldclockHandler', name='tools_worldclock'),
+          webapp2.Route(r'/tools/worldclock/<ident1:[-+0-9a-zA-Z_]+>', handler='dclab.lysender.handler.tools.worldclock.WorldclockHandler:specific_timezone', name='tools_worldclock_selected', methods=['GET']),
+          webapp2.Route(r'/tools/worldclock/<ident1:[-+0-9a-zA-Z_]+>/<ident2:[-+0-9a-zA-Z_]+>', handler='dclab.lysender.handler.tools.worldclock.WorldclockHandler:specific_timezone', name='tools_worldclock_selected', methods=['GET']),
+          webapp2.Route(r'/tools/worldclock/<ident1:[-+0-9a-zA-Z_]+>/<ident2:[-+0-9a-zA-Z_]+>/<ident3:[-+0-9a-zA-Z_]+>', handler='dclab.lysender.handler.tools.worldclock.WorldclockHandler:specific_timezone', name='tools_worldclock_selected', methods=['GET']),
           webapp2.Route(r'/sitemap.xml', handler='dclab.lysender.handler.sitemap.IndexHandler', name='sitemap'),
           webapp2.Route(r'/task/tzupdate', handler='dclab.lysender.handler.task.tzupdate.IndexHandler', name='task_tzupdate')]
 
-app_version = '2.1.2'
+app_version = '2.2.0'
 template_dir = 'templates'
 in_production = True
 analytics_config = {}

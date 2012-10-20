@@ -48,7 +48,7 @@ body a[href^="http:"]:visited {
 }
 #menu ul {
 	float: right;
-	width: 320px;
+	width: 380px;
 	text-align: right;
 }
 #menu ul li {
