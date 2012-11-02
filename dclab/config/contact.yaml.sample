@@ -1,0 +1,17 @@
+--- 
+sender_name: 'Lysender'
+sender_email: 'lysender@email'
+receiver_name: 'Lysender'
+receiver_email: 'lysender@email'
+subject_line: 'Somebody contacted you via www.lysender.com'
+message_body: |
+  %s contacted you via www.lysender.com
+
+  Name: %s
+  Email: %s
+  Message:
+
+  %s
+
+  --
+  Contact form

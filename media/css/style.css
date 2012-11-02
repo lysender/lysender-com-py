@@ -145,3 +145,13 @@ p.tools {
 #footer a:hover {
 	color: #780c0c;
 }
+
+#contact-form {
+	margin-top: 30px;
+}
+#contact-form textarea {
+	height: 150px;
+}
+form.validate label.error {
+	color: #B94A48;
+}
