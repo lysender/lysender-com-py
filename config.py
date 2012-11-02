@@ -25,7 +25,7 @@ routes = [webapp2.Route(r'/', handler='dclab.lysender.handler.index.IndexHandler
           webapp2.Route(r'/sitemap.xml', handler='dclab.lysender.handler.sitemap.IndexHandler', name='sitemap'),
           webapp2.Route(r'/task/tzupdate', handler='dclab.lysender.handler.task.tzupdate.IndexHandler', name='task_tzupdate')]
 
-app_version = '2.2.0'
+app_version = '2.3.0'
 template_dir = 'templates'
 in_production = True
 analytics_config = {}
