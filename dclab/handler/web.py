@@ -3,7 +3,9 @@ import webapp2
 import logging
 import datetime
 
+import dclab
 import config
+from google.appengine.api import memcache
 
 class WebHandler(webapp2.RequestHandler):
     '''Base handler for site'''
@@ -11,6 +13,9 @@ class WebHandler(webapp2.RequestHandler):
     def __init__(self, request, response):
         self.initialize(request, response)
         self.template_params = get_template_params()
+        self.session_identifier = 'gaesessid'
+        self.session_id = None
+        self.init_session()
 
     def set_ga_tags(self, index, extra):
         tags = get_page_tags(index)
@@ -24,6 +29,23 @@ class WebHandler(webapp2.RequestHandler):
     def render_template(self, template_file):
         template = config.jinja_environment.get_template(template_file)
         self.response.out.write(template.render(self.template_params))
+
+    def init_session(self):
+        session_id = self.request.cookies.get(self.session_identifier)
+        if not session_id:
+            session_id = dclab.generate_uuid()
+            self.response.headers.add_header('Set-Cookie', '%s=%s; path=/' % (self.session_identifier, session_id))
+
+        self.session_id = session_id
+
+    def set_session_var(self, name, value):
+        memkey = '%s-%s' % (self.session_id, name)
+        memcache.set(memkey, value, 86400)
+
+    def get_session_var(self, name):
+        memkey = '%s-%s' % (self.session_id, name)
+        return memcache.get(memkey)
+
 
 def get_template_params():
     app = webapp2.get_app()

@@ -7,6 +7,9 @@ from dclab.handler.web import WebHandler
 
 class ContactHandler(WebHandler):
     def get(self):
+        token = dclab.generate_uuid()
+        self.set_session_var('token', token)
+        self.template_params['token'] = token
         self.template_params['scripts'].extend(['media/js/jquery.validate.min.js', 'media/js/contact.js'])
         self.set_ga_tags('contact', None)
         self.render_template(os.path.join('contact', 'index.html'))
@@ -15,9 +18,10 @@ class ContactHandler(WebHandler):
         name = self.request.get('name', None)
         email = self.request.get('email', None)
         message = self.request.get('message', None)
+        token = self.request.get('token', None)
 
         try:
-            self.process_message(name, email, message)
+            self.process_message(name, email, message, token)
         except validatish.Invalid as e:
             self.template_params['error_messages'] = e.message
 
@@ -26,11 +30,17 @@ class ContactHandler(WebHandler):
         self.template_params['message'] = message
         self.template_params['posted'] = True
 
+        # Generate new token
+        new_token = dclab.generate_uuid()
+        self.set_session_var('token', new_token)
+        self.template_params['token'] = new_token
+
         self.template_params['scripts'].extend(['media/js/jquery.validate.min.js', 'media/js/contact.js'])
         self.set_ga_tags('contact', None)
         self.render_template(os.path.join('contact', 'index.html'))
 
-    def validate_post(self, name, email, message):
+    def validate_post(self, name, email, message, token):
+        session_token = self.get_session_var('token')
         messages = {}
         field_validators = {
             'name': [
@@ -68,6 +78,14 @@ class ContactHandler(WebHandler):
                     'fewer-than': 'Message is too short',
                     'more-than': 'Message is too long',
                 }],
+            ],
+            'token': [
+                ['is_required', token, {
+                    'required': 'The form was not submitted properly, try again'
+                }],
+                ['is_equal', token, session_token, {
+                    'incorrect': 'The form was not submitted properly, try again'
+                }]
             ]
         }
 
@@ -90,9 +108,9 @@ class ContactHandler(WebHandler):
         # Otherwise all is good
         return True
 
-    def process_message(self, name, email, message):
+    def process_message(self, name, email, message, token):
         contact_config = dclab.get_yaml_config('contact.yaml')
-        self.validate_post(name, email, message)
+        self.validate_post(name, email, message, token)
 
         sender_line = '%s <%s>' % (contact_config['sender_name'], contact_config['sender_email'])
         receiver_line = '%s <%s>' % (contact_config['receiver_name'], contact_config['receiver_email'])
