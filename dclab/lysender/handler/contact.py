@@ -119,7 +119,7 @@ class ContactHandler(WebHandler):
         msg = mail.EmailMessage(sender=sender_line,
                                     subject=contact_config['subject_line'])
 
-        msg.to = "%s <%s>" % ('Lysender', 'dc.eros@gmail.com')
+        msg.to = receiver_line
         msg.body = contact_config['message_body'] % (name, name, email, message)
 
         msg.send()
