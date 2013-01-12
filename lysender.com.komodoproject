@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Komodo Project File - DO NOT EDIT -->
+<project id="7ef9b505-ca0c-466e-8139-978e3bea7972" kpf_version="5" name="lysender.com.komodoproject">
+<preference-set idref="7ef9b505-ca0c-466e-8139-978e3bea7972">
+  <long id="caretStyle">1</long>
+  <long id="caretWidth">1</long>
+  <boolean id="checkDiskFile">1</boolean>
+  <boolean id="checkNetworkDiskFile">1</boolean>
+  <string id="donotask_action_close_deleted_files"></string>
+  <string id="donotask_action_dragdrop_uri"></string>
+  <string id="donotask_action_reload_changed_files"></string>
+  <boolean id="donotask_buffer_conflicts_with_file_on_disk">0</boolean>
+  <boolean id="donotask_close_deleted_files">0</boolean>
+  <boolean id="donotask_dragdrop_uri">0</boolean>
+  <boolean id="donotask_reload_changed_files">0</boolean>
+  <boolean id="donotask_revert_buffer">0</boolean>
+  <boolean id="donotask_treat_large_documents_as_text">0</boolean>
+  <string relative="path" id="import_dirname"></string>
+  <string id="import_exclude_matches">*.*~;*.bak;*.tmp;CVS;.#*;*.pyo;*.pyc;.svn;.git;.hg;.bzr;*%25*;tmp*.html;.DS_Store;*.swp;*.kpf;*.komodoproject;.komodotools;__pycache__</string>
+  <string id="import_include_matches"></string>
+  <boolean id="scrollEndAtLastLine">0</boolean>
+  <long id="scrollWidth">2000</long>
+  <boolean id="scrollWidthTracking">0</boolean>
+  <boolean id="select_most_recent_buffer_on_buffer_close">0</boolean>
+  <boolean id="showEOL">0</boolean>
+  <boolean id="showLineNumbers">1</boolean>
+  <boolean id="showWhitespace">0</boolean>
+  <long id="ySlop">5</long>
+</preference-set>
+</project>
